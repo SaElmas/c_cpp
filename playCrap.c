@@ -9,6 +9,8 @@ int playCrap(int details) {
     int dice[2];
     int sum;
     int thePoint;
+    int turnCounterWin=0;
+    int turnCounterLost=0;
     enum Status gameStatus=CONT;
     fillArrayRandom(dice, 2, 1, 6);
     if(details){
@@ -19,6 +21,7 @@ int playCrap(int details) {
         if(details){
             printf("You won\n");
         }
+        turnCounterWin++;
         gameStatus = WIN;
         return 1;
     }
@@ -26,6 +29,7 @@ int playCrap(int details) {
         if(details){
             printf("You lost\n");
         }
+        turnCounterWin++;
         gameStatus = LOST;
         return 0;
     }
@@ -45,6 +49,7 @@ int playCrap(int details) {
                 if(details){
                     printf("You lost\n");
                 }
+                turnCounterLost++;
                 gameStatus=LOST;
                 return 0;
             }
@@ -52,6 +57,7 @@ int playCrap(int details) {
                 if(details){
                     printf("You win\n");
                 }
+                turnCounterWin++;
                 gameStatus=WIN;
                 return 1;
             }
