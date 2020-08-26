@@ -1,7 +1,7 @@
 CFLAGS= -Wall -g
 CC= gcc
 
-objs = main.o utilities.o playCrap.o
+objs = main.o utilities.o playCrap.o turtleGraphics.o
 
 main: $(objs) defs.h
 	$(CC) $(CFLAGS) $(objs) -o main
@@ -12,6 +12,8 @@ main: $(objs) defs.h
 
  playCrap.o: playCrap.h
 
+ turtleGraphics.o: turtleGraphics.h
+
 .PHONY: clean
 clean:
 	rm -rf *.o main 
@@ -21,4 +23,4 @@ all: clean main
 
 .PHONY: run1
 run1:
-	./main	
+	./main 
