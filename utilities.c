@@ -211,3 +211,33 @@ int isInside (int arr[],int size, int n){
   return 0;
 }
 
+int** matrixMultp(int** arr1, int r1, int c1, int** arr2, int r2, int c2){
+  int** arr;
+  int i,j,k;
+
+
+  arr = (int**)malloc(sizeof(int*));
+  for (i=0 ; i<r1 ; i++){
+    arr[i] = (int*)malloc(sizeof(int)*c2);
+  }
+  for(i=0 ; i<r1 ; i++){
+    for(j=0 ; j<c2 ; j++){
+      arr[i][j] = 0;
+    }
+  }
+
+  for(i=0 ; i<r1 ; i++) {
+    for(j=0 ; j<c2 ; j++){
+      for(k=0; k<r2 ; k++){
+        arr[i][j] += arr1[i][k]*arr2[k][j];
+      }
+    }
+
+  }
+
+  if(c1!=r2) {
+    puts("Check Matrix Dimentions");
+    return arr;
+  }
+  return arr;
+}
