@@ -1,1 +1,1 @@
-int playCrap(int);
+int* playCrap(int);
