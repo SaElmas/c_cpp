@@ -22,9 +22,10 @@ void fillArrayRandom(int arr[],int size, int start, int stop){
 
 void printArray(int const arr[], int size){
   for(size_t i=1 ; i<=size ; i++){
-    printf("%8d",arr[i-1]);
+    printf("%2d",arr[i-1]);
     if(i%10==0 ) printf("\n");
   }
+  printf("\n");
 }
 
 float mean (int const arr[], int size){
@@ -138,11 +139,11 @@ void shuffleArray(int arr[], int size){
   unsigned short i;
   unsigned short randIndex;
   int hold;
-  srand(time(NULL));
-  puts("Shuffle Initialized");
+  for(i=0 ; i<10 ; i++) rand();
+//  puts("Shuffle Initialized");
   for(i=0 ; i<size; i++){
     randIndex = rand()%(size-1); 
-    printf("random index number:%2d\n",randIndex);
+//    printf("random index number:%2d\n",randIndex);
     hold= arr[i];
     arr[i] = arr[randIndex];
     arr[randIndex]=hold;
@@ -240,4 +241,48 @@ int** matrixMultp(int** arr1, int r1, int c1, int** arr2, int r2, int c2){
     return arr;
   }
   return arr;
+}
+
+int isPrime(unsigned long long int n)
+{
+  unsigned long int i;
+/*  printf("Program startswwith %lld...\n", n); */
+  if(n==1 || n==2 || n==3) return 1;
+  for(i=2 ; i<= n/2 ; i++)
+  {
+/*    printf("checking primity of %lld...\n", n); */
+    if(n%i==0) return 0;
+  }
+  return 1;
+}
+
+unsigned int* primeFactors(unsigned long long int n)
+{
+  unsigned int count=0;
+  unsigned int size=5;
+  unsigned long int i;
+  unsigned int* factors; 
+  factors = (unsigned int*)calloc(size,sizeof(unsigned int));
+  for(i=1 ; i<n/2 ; i++)
+  {
+    if(n%i == 0 && isPrime(i))
+    {
+      factors[count+1]=i;
+      count++;
+      if(count==size-1)
+      {
+        factors = (unsigned int*) realloc(factors, sizeof(unsigned int)*(size+5));
+        size+=5;
+      }
+    }
+  }
+  factors[0] = count;
+  return factors;
+}
+
+int getRandomInteger(int start, int stop)
+{
+  int randNumber;
+  randNumber = rand()%(stop-start+1) +1;
+  return randNumber;
 }

@@ -17,3 +17,6 @@ void setUnion(int arr[], int arr1[], int arr2[], int size);
 int isInside(int arr[], int size, int n);
 void setIntersection(int arr[], int arr1[], int arr2[], int size);
 int** matrixMultp(int** arr1, int r1, int c1, int** arr2, int r2, int c2);
+int isPrime(unsigned long long int n);
+unsigned int* primeFactors(unsigned long long int n);
+int getRandomInteger(int start, int stop);
