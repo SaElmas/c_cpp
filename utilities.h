@@ -20,3 +20,5 @@ int** matrixMultp(int** arr1, int r1, int c1, int** arr2, int r2, int c2);
 int isPrime(unsigned long long int n);
 unsigned int* primeFactors(unsigned long long int n);
 int getRandomInteger(int start, int stop);
+
+void toUpperCase(char* sPtr);

@@ -13,9 +13,7 @@ void initEmptyBoard(char board[8][8][3], int* pRow, int* pCol)
             strcpy(board[i][j],"  ");
 		}
 	} 
-    strcpy(board[3][3],"00");
-    *pRow = 3;
-    *pCol = 3;
+    strcpy(board[*pRow][*pCol],"00");
 }
 
 void drawChessBoard(char board[8][8][3], int count)
@@ -111,29 +109,70 @@ int isInBoard(int row, int col)
 int moveKnight(char board[][8][3], int* pRow, int* pColumn, int* counter)
 {
     int i;
+    int minPriority=8;
+    int minPriorityIndex;
+    int noMoveLeft=0;
     char str[3];
     int tRow, tColumn;
     int mRow[8] =    { 2, 1, -1, -2, -2, -1, 1, 2};
     int mColumn[8] = {-1,-2, -2, -1,  1,  2, 2, 1};
-    int randMove[8]={1,2,3,4,5,6,7,8};
+    static int randMove[8]={0,1,2,3,4,5,6,7};
+    static int posMatrix [8][2] = {{1,8},{1,8},{1,8},{1,8},{1,8},{1,8},{1,8},{1,8}};
+    int priority[8][8]=  {  {2,3,4,4,4,4,3,2},
+                            {3,4,6,6,6,6,4,3},
+                            {4,6,8,8,8,8,6,4},
+                            {4,6,8,8,8,8,6,4},
+                            {4,6,8,8,8,8,6,4},
+                            {4,6,8,8,8,8,6,4},
+                            {3,4,6,6,6,6,4,3},
+                            {2,3,4,4,4,4,3,2} };
+
     shuffleArray(randMove, 8);
 
+// Calculate available moves with priority values;
     for(i=0 ; i<8 ; i++){
- //       printf("Checking move number %2d\n",randMove[i]);
-        tRow = *pRow + mRow[randMove[i]-1];
-        tColumn = *pColumn + mColumn[randMove[i]-1];
-        if(!cellVisited(board, tRow, tColumn) && isInBoard(tRow, tColumn))
-        {
-            (*counter)+=1;
-            sprintf(str,"%2d",*counter);
-            *pRow= tRow;
-            *pColumn= tColumn;
-            strcpy(board[*pRow][*pColumn],str);
-            return 1;
+        tRow = *pRow + mRow[randMove[i]];
+        tColumn = *pColumn + mColumn[randMove[i]];
+        if(!cellVisited(board,tRow,tColumn) && isInBoard(tRow,tColumn)){
+            posMatrix[i][0] = 1; //Cell is Available
+            posMatrix[i][1] = priority[tRow][tColumn]; //Assigns the priority value 
+        }
+        else{
+            posMatrix[i][0] = 0; //Cell is not Available
+        }
+    }
+
+    noMoveLeft=1;
+    for(i=0 ; i<8 ; i++){
+        if(posMatrix[i][0]==1){
+            noMoveLeft=0;
             break;
         }
-   }
-   return 0;
+    }
+    if(noMoveLeft) return 0;
+
+
+// print possiblity matrix
+//    for(i=0 ;i<8 ; i++){
+//        printf("%3d%3d\n",posMatrix[i][0], posMatrix[i][1]);
+//    }
+
+// find the highest priority move
+    for(i=0 ; i<8 ; i++ ){
+        if(posMatrix[i][0] == 1 && posMatrix[i][1] <= minPriority){
+            minPriorityIndex = i;
+            minPriority = posMatrix[i][1];
+        }
+    }
+//    puts("");
+//    printf("High priority move is indexed with: %d\n",minPriorityIndex);
+
+    (*counter)+=1;
+    sprintf(str,"%2d",*counter);
+    *pRow += mRow[randMove[minPriorityIndex]];
+    *pColumn += mColumn[randMove[minPriorityIndex]];
+    strcpy(board[*pRow][*pColumn],str);
+    return 1;
 }
 
 int startKnightsTour(int showSteps, int randSeed)
@@ -143,8 +182,10 @@ int startKnightsTour(int showSteps, int randSeed)
     pRow = (int*)malloc(sizeof(int));
     pCol = (int*)malloc(sizeof(int));
     counter = (int*)malloc(sizeof(int));
-    *pRow =3;
-    *pCol =3;
+    *pRow =0;
+    *pCol =0;
+    *counter =0;
+//puts("Inside startKnight. Variables Initiated");
     initEmptyBoard(board, pRow, pCol );
     srand(time(NULL)*randSeed);
     while(moveKnight(board, pRow, pCol, counter )){

@@ -23,6 +23,10 @@ clean:
 .PHONY: all
 all: clean main
 
-.PHONY: run1
+.PHONY: run
 run:
+	./main
+
+.PHONY: run1
+run1:
 	./main > output.txt

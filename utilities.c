@@ -286,3 +286,14 @@ int getRandomInteger(int start, int stop)
   randNumber = rand()%(stop-start+1) +1;
   return randNumber;
 }
+
+void toUpperCase(char* sPtr)
+{
+  while(*sPtr != '\0'){
+    if(*sPtr < 'z' && *sPtr > 'a'){
+      printf("%c",*sPtr -= ('a' -'A'));
+    }
+    sPtr++;
+  }
+
+}
