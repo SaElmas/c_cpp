@@ -6,7 +6,7 @@ int median (int const arr[], int size);
 int frequency (int const arr[],int size, int value);
 int mode(int const arr[], int size, int stop, int start);
 int arrMax(int const arr[], int size, short select); // select=0 returns max value select=1 returns max index
-int arrMin(int const arr[], int size, short select);// select=0 returns min value select=1 returns min index
+int* arrMin(int const arr[], int size);// retur[0] is index, retur[1] is value;
 void bubbleSort(int arr[], int size); 
 void bubbleSortDesc(int arr[], int size); 
 void selectionSort(int arr[], int size);

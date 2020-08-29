@@ -22,7 +22,7 @@ void fillArrayRandom(int arr[],int size, int start, int stop){
 
 void printArray(int const arr[], int size){
   for(size_t i=1 ; i<=size ; i++){
-    printf("%2d",arr[i-1]);
+    printf("%4d",arr[i-1]);
     if(i%10==0 ) printf("\n");
   }
   printf("\n");
@@ -71,7 +71,7 @@ void selectionSort(int arr[], int size){
   int i;
 
   for(i=0 ; i<size-1 ; i++){
-    minIndex = arrMin(arr+i,size-i, 1);
+    minIndex = arrMin(arr+i,size-i)[0];
     swapArr(arr+i,0,minIndex);
   }
 }
@@ -96,17 +96,20 @@ int arrMax(int const arr[], int size, short select){
   else return index;
 }
 
-int arrMin(int const arr[], int  size, short select){
+int* arrMin(int const arr[], int  size){
   int min=arr[0];
   int index=0;
+  int* rPtr;
+  rPtr = (int*)malloc(sizeof(int)*2);
   for(size_t i=0 ; i<size ; i++){
     if(arr[i] < min ){
       min = arr[i];
       index = i;
     }
   }
-  if (select ==0) return min;
-  else return index;
+  rPtr[0] = index;
+  rPtr[1] = min;
+  return rPtr;
 }
 
 int median (int const arr[], int size){

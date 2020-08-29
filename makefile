@@ -1,7 +1,7 @@
 CFLAGS= -Wall -g
 CC= gcc
 
-objs = main.o utilities.o playCrap.o turtleGraphics.o knightsTour.o
+objs = main.o utilities.o playCrap.o turtleGraphics.o knightsTour.o eightQueens.o
 
 main: $(objs) defs.h
 	$(CC) $(CFLAGS) $(objs) -o main
@@ -16,6 +16,8 @@ main: $(objs) defs.h
 
  knightsTour.o : knightsTour.h
 
+ eightQueens.o : eightQueens.h knightsTour.h
+	$(CC) $(CFLAGS) -c eightQueens.c knightsTour.c
 .PHONY: clean
 clean:
 	rm -rf *.o main 
@@ -30,3 +32,7 @@ run:
 .PHONY: run1
 run1:
 	./main > output.txt
+
+.PHONY: run2
+run2:
+	./main >> output.txt

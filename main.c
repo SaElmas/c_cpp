@@ -2,22 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <limits.h>
+#include <stdint.h>
 #include "utilities.h"
 #include "playCrap.h"
 #include "turtleGraphics.h"
 #include "defs.h"
 #include "knightsTour.h"
+#include "eightQueens.h"
 
 
 
 
 int main()
 {
-	char* str;
-	str=(char*)malloc(sizeof(char)*20);
-	strcpy(str, "saitelmas");
-	toUpperCase(str);
-	printf("%s\n",str);
+	printf("%ul",SIZE_MAX);
 
 	return 0;
 }

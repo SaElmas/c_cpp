@@ -22,7 +22,7 @@ void drawChessBoard(char board[8][8][3], int count)
     int row, column;
     row = column =0;
     puts("+----+----+----+----+----+----+----+----+"); 
-    printf("+          MOVE COUNT : %2d              +\n",count); 
+    printf("+             MOVE COUNT : %2d           +\n",count); 
     puts("+----+----+----+----+----+----+----+----+"); 
     for(i=0 ; i< 8 ; i++)
     {
