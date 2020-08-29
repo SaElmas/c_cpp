@@ -10,13 +10,14 @@
 #include "defs.h"
 #include "knightsTour.h"
 #include "eightQueens.h"
-
-
+#include "recursiveFunctions.h"
 
 
 int main()
 {
-	printf("%ul",SIZE_MAX);
-
+	int arr[10]={1,2,3,4,5,6,7,8,9,10};
+	int key;
+	scanf("%d",&key);
+	printf("%d\n",linearSearchRec(arr,key,10));
 	return 0;
 }

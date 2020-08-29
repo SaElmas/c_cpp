@@ -1,23 +1,28 @@
 CFLAGS= -Wall -g
 CC= gcc
 
-objs = main.o utilities.o playCrap.o turtleGraphics.o knightsTour.o eightQueens.o
+objs = main.o utilities.o playCrap.o turtleGraphics.o knightsTour.o eightQueens.o \
+		recursiveFunctions.o
 
 main: $(objs) defs.h
 	$(CC) $(CFLAGS) $(objs) -o main
 
- main.o:  defs.h
+main.o:  defs.h
 
- utilities.o:  utilities.h
+utilities.o:  utilities.h
 
- playCrap.o: playCrap.h
+playCrap.o: playCrap.h
 
- turtleGraphics.o: turtleGraphics.h
+turtleGraphics.o: turtleGraphics.h
 
- knightsTour.o : knightsTour.h
+knightsTour.o : knightsTour.h
 
- eightQueens.o : eightQueens.h knightsTour.h
+recursiveFunctions.o : recursiveFunctions.h
+
+eightQueens.o : eightQueens.h knightsTour.h
 	$(CC) $(CFLAGS) -c eightQueens.c knightsTour.c
+
+
 .PHONY: clean
 clean:
 	rm -rf *.o main 
