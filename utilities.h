@@ -1,4 +1,4 @@
-void fillArray(int arr[], int size);
+void fillArray(int arr[], int start, int size);
 void fillArrayRandom(int arr[],int size, int start, int stop);
 void printArray(int const arr[], int size);
 float mean (int const arr[], int size);

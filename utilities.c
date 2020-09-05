@@ -4,10 +4,10 @@
 
 #include "utilities.h"
 
-void fillArray(int arr[], int size){
+void fillArray(int arr[],int start, int size){
   unsigned short i;
-  for(i=0 ; i<size; i++){
-    arr[i] = i+1;
+  for(i=start ; i<size+start; i++){
+    arr[i] = i;
   }
 }
 

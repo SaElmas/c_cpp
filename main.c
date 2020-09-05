@@ -11,13 +11,14 @@
 #include "knightsTour.h"
 #include "eightQueens.h"
 #include "recursiveFunctions.h"
+#include "poker.h"
 
 
-int main()
+
+
+int main(int argc, char* argv[])
 {
-	int arr[10]={1,2,3,4,5,6,7,8,9,10};
-	int key;
-	scanf("%d",&key);
-	printf("%d\n",linearSearchRec(arr,key,10));
-	return 0;
+   playPoker();
+   return 0;
 }
+

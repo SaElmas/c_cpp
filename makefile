@@ -2,7 +2,7 @@ CFLAGS= -Wall -g
 CC= gcc
 
 objs = main.o utilities.o playCrap.o turtleGraphics.o knightsTour.o eightQueens.o \
-		recursiveFunctions.o
+		recursiveFunctions.o poker.o
 
 main: $(objs) defs.h
 	$(CC) $(CFLAGS) $(objs) -o main
@@ -18,6 +18,8 @@ turtleGraphics.o: turtleGraphics.h
 knightsTour.o : knightsTour.h
 
 recursiveFunctions.o : recursiveFunctions.h
+
+poker.o: poker.h
 
 eightQueens.o : eightQueens.h knightsTour.h
 	$(CC) $(CFLAGS) -c eightQueens.c knightsTour.c
