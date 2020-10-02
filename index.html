@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>PokerHandRanking</title>
+  <style>
+    body {
+      font-family:'Courier New', Courier, monospace;
+      background-color:beige;
+    }
+    tr, td, th {
+      border-collapse: collapse;
+      border: 1px solid black;
+      text-align: center;
+      padding: 2px;
+    }
+    td {
+      font-size: small;
+    }
+    td:first-child {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>Suit</th>
+      <th>Code Decimal</th>
+      <th>Combinations</th>
+      <th>Binary Digids</th>
+      <th>Comparision</th>
+      <th>Explenation</th>
+    </tr>
+    <tr>
+      <td>Straight Flush</th>
+      <td>9</td>
+      <td>40</td>
+      <td>4+2</td>
+      <td>(High Card).(Suit) </td>
+      <td>Suit order spades -> heard -> diamonds -> club <br> 10 high cards 4 suites</td>
+    </tr>
+
+      <td>Four of a Kind</th>
+      <td>8</td>
+      <td>624</td>
+      <td>4+2</td>
+      <td>(High Card).(Suit) </td>
+      <td>13 high cards 4 suites</td>
+    </tr>
+    <tr>
+      <td>Full House</th>
+      <td>7</td>
+      <td>3744</td>
+      <td>4+4</td>
+      <td>(Card1).(Card2) </td>
+      <td>Card1 for triple face, Card2 for double face</td>
+    </tr>
+    <tr>
+      <td>Flush</td>
+      <td>6</td>
+      <td>5108</td>
+      <td>4+2</td>
+      <td>(High Card).(Suit) </td>
+      <td>Highes card int the flush and then suit</td>
+    </tr>
+    <tr>
+      <td>Straight</th>
+      <td>5</td>
+      <td>10200</td>
+      <td>4+2</td>
+      <td>(High Card).(Suit) </td>
+      <td>13 high cards 4 suites</td>
+    </tr>
+    <tr>
+      <td>Tree of a Kind</th>
+      <td>4</td>
+      <td>54912</td>
+      <td>4</td>
+      <td>(Card1)</td>
+      <td>Card1 for triple</td>
+    </tr>
+    <tr>
+      <td>Two Pairs</th>
+      <td>3</td>
+      <td>123552</td>
+      <td>4+4+4+2</td>
+      <td>(Card1)(Card2)(Card3)(Suit)</td>
+      <td>Pair1 Pair2 HighCard HighCarSuit</td>
+    </tr>
+    <tr>
+      <td>Pair</th>
+      <td>2</td>
+      <td>1098240</td>
+      <td>4+4+4+4+2</td>
+      <td>(Card1)(Card2)(Card3)(Card4)(Suit)</td>
+      <td>Pair High1 High2 High3 Suit</td>
+    <tr>
+    <tr>
+      <td>High Card</th>
+      <td>1</td>
+      <td>1302540 </td>
+      <td>4+4+4+4+4+2</td>
+      <td>(Card1)(Card2)(Card3)(Card4)(Card5)(Suit)</td>
+      <td>High1 High2 High3 High4 High5 Suit</td>
+    <tr>
+  </table>
+  <h3>Summary</h3>
+  <p>For ranking a 26 digit binary number seems to be enough to order all the possible hands. First 4 digits represents the poker rank and the rest is for inner ranking.</p>
+  <p>For example. 1001 1101 0001 0000 0000 0000 0000  would represent Rolay Flush in hearts</p>
+</body>
+
+</html>
