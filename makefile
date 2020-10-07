@@ -2,7 +2,7 @@ CFLAGS= -Wall -g
 CC= gcc
 
 objs = main.o utilities.o playCrap.o turtleGraphics.o knightsTour.o eightQueens.o \
-		recursiveFunctions.o poker.o
+		recursiveFunctions.o poker.o maxSubSeq.o
 
 main: $(objs) defs.h
 	$(CC) $(CFLAGS) $(objs) -o main
@@ -21,6 +21,8 @@ recursiveFunctions.o : recursiveFunctions.h
 
 poker.o: poker.h
 
+maxSubSeq.o: maxSubSeq.h
+
 eightQueens.o : eightQueens.h knightsTour.h
 	$(CC) $(CFLAGS) -c eightQueens.c knightsTour.c
 
@@ -31,6 +33,7 @@ clean:
 
 .PHONY: all
 all: clean main
+
 
 .PHONY: run
 run:

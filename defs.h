@@ -1,5 +1,5 @@
-#define SIZE 10
-#define START 10
+#define SIZE 20
+#define START 0 
 #define STOP 20
 
 #define PLAY 400000 
